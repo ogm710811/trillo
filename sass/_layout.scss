@@ -1,0 +1,115 @@
+@import "base";
+
+.container {
+	max-width: 120rem;
+	margin: 8rem auto;
+	background-color: var(--color-grey-light-1);
+	box-shadow: var(--shadow-dark);
+
+	min-height: 50rem;
+
+	@media only screen and (max-width: $bp-extra-large) {
+		margin: 0;
+		height: 100%;
+
+		// starting at this point the width needs to be re-calculated
+		// since the root font-size will change from 10px to 8px
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.header {
+	font-size: 1.4rem;
+	height: 7rem;
+	background-color: var(--color-white);
+	border-bottom: var(--line);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	@media only screen and (max-width: $bp-extra-small) {
+		flex-wrap: wrap;
+		height: 11rem;
+		align-content: space-around;
+	}
+}
+
+.content {
+	display: flex;
+
+	// at this breakpoint we are changing the direction of the
+	// content container to display as "column"
+	// this displays the sidebar on the top of the view
+	@media only screen and (max-width: $bp-medium) {
+		flex-direction: column;
+	}
+}
+
+.sidebar {
+	background-color: var(--color-grey-dark-1);
+
+	// flex property values :
+	// grow = 0 not grow if there is some space
+	// shrink = 0 not shrink if there is not enough space
+	// basis(length)
+	flex: 0 0 18%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.hotel-view {
+	background-color: var(--color-white);
+
+	// flex == 1 combine with the flex == 0 0 18% of the sidebar
+	// allows the hotel-view to take all the space on the right side
+	// flex == 1 means it grows all it can
+	flex: 1;
+
+}
+
+.detail {
+	font-size: 1.4rem;
+	background-color: var(--color-grey-light-1);
+	border-bottom: var(--line);
+	display: flex;
+	padding: 4.5rem;
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 3rem;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		flex-direction: column;
+	}
+}
+
+.description {
+	background-color: var(--color-white);
+	box-shadow: var(--shadow-light);
+	padding: 3rem;
+	margin-right: 4.5rem;
+	flex: 0 0 60%;
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 2rem;
+		margin-right: 3rem;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		margin-right: 0;
+		margin-bottom: 2rem;
+	}
+}
+
+.user-reviews {
+	flex: 1;
+
+	// applying display flex value here
+	// to make all elements on the container aligned to center
+	// this will fix centering only the "Show all" button
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
